@@ -7,7 +7,7 @@
             "cELM.cpp"
         ], 
         "depends": [
-            "extras.hpp"
+            "extras.h"
         ], 
         "language": "c++"
     }
@@ -263,7 +263,7 @@ class __Pyx_FakeReference {
 #include "stdlib.h"
 #include "numpy/arrayobject.h"
 #include "numpy/ufuncobject.h"
-#include "extras.hpp"
+#include "extras.h"
 #include "pythread.h"
 #include "pystate.h"
 #ifdef _OPENMP
@@ -1543,8 +1543,8 @@ static PyObject *__pyx_builtin_id;
 static PyObject *__pyx_builtin_IndexError;
 static int __pyx_pf_3ELM_3ELM___cinit__(struct __pyx_obj_3ELM_ELM *__pyx_v_self); /* proto */
 static void __pyx_pf_3ELM_3ELM_2__dealloc__(struct __pyx_obj_3ELM_ELM *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_3ELM_3ELM_4fit(struct __pyx_obj_3ELM_ELM *__pyx_v_self, PyObject *__pyx_v_J, PyObject *__pyx_v_hiddenNeurons, PyObject *__pyx_v_seed); /* proto */
-static PyObject *__pyx_pf_3ELM_3ELM_6transform(struct __pyx_obj_3ELM_ELM *__pyx_v_self, PyObject *__pyx_v_X, PyObject *__pyx_v_kernel); /* proto */
+static PyObject *__pyx_pf_3ELM_3ELM_4fit(struct __pyx_obj_3ELM_ELM *__pyx_v_self, PyObject *__pyx_v_columns, PyObject *__pyx_v_numTransformation, PyObject *__pyx_v_seed); /* proto */
+static PyObject *__pyx_pf_3ELM_3ELM_6transform(struct __pyx_obj_3ELM_ELM *__pyx_v_self, PyObject *__pyx_v_X, PyObject *__pyx_v_activation); /* proto */
 static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, Py_buffer *__pyx_v_info, int __pyx_v_flags); /* proto */
 static void __pyx_pf_5numpy_7ndarray_2__releasebuffer__(PyArrayObject *__pyx_v_self, Py_buffer *__pyx_v_info); /* proto */
 static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array___cinit__(struct __pyx_array_obj *__pyx_v_self, PyObject *__pyx_v_shape, Py_ssize_t __pyx_v_itemsize, PyObject *__pyx_v_format, PyObject *__pyx_v_mode, int __pyx_v_allocate_buffer); /* proto */
@@ -1587,7 +1587,6 @@ static PyObject *__pyx_tp_new__memoryviewslice(PyTypeObject *t, PyObject *a, PyO
 static char __pyx_k_B[] = "B";
 static char __pyx_k_H[] = "H";
 static char __pyx_k_I[] = "I";
-static char __pyx_k_J[] = "J";
 static char __pyx_k_L[] = "L";
 static char __pyx_k_O[] = "O";
 static char __pyx_k_Q[] = "Q";
@@ -1609,7 +1608,6 @@ static char __pyx_k_T[] = "T{";
   static char __pyx_k__7[] = "^";
   static char __pyx_k__8[] = "";
   static char __pyx_k__9[] = ":";
-  static char __pyx_k_hn[] = "hn";
   static char __pyx_k_id[] = "id";
   static char __pyx_k_np[] = "np";
 static char __pyx_k__10[] = "}";
@@ -1626,6 +1624,7 @@ static char __pyx_k_main[] = "__main__";
 static char __pyx_k_mode[] = "mode";
 static char __pyx_k_name[] = "name";
 static char __pyx_k_ndim[] = "ndim";
+static char __pyx_k_numT[] = "numT";
 static char __pyx_k_pack[] = "pack";
 static char __pyx_k_seed[] = "seed";
 static char __pyx_k_size[] = "size";
@@ -1642,11 +1641,11 @@ static char __pyx_k_start[] = "start";
 static char __pyx_k_format[] = "format";
 static char __pyx_k_import[] = "__import__";
 static char __pyx_k_indptr[] = "indptr";
-static char __pyx_k_kernel[] = "kernel";
 static char __pyx_k_name_2[] = "__name__";
 static char __pyx_k_struct[] = "struct";
 static char __pyx_k_unpack[] = "unpack";
 static char __pyx_k_asarray[] = "asarray";
+static char __pyx_k_columns[] = "columns";
 static char __pyx_k_fortran[] = "fortran";
 static char __pyx_k_indices[] = "indices";
 static char __pyx_k_memview[] = "memview";
@@ -1656,16 +1655,17 @@ static char __pyx_k_TypeError[] = "TypeError";
 static char __pyx_k_enumerate[] = "enumerate";
 static char __pyx_k_IndexError[] = "IndexError";
 static char __pyx_k_ValueError[] = "ValueError";
+static char __pyx_k_activation[] = "activation";
 static char __pyx_k_csr_matrix[] = "csr_matrix";
 static char __pyx_k_pyx_vtable[] = "__pyx_vtable__";
 static char __pyx_k_MemoryError[] = "MemoryError";
 static char __pyx_k_RuntimeError[] = "RuntimeError";
 static char __pyx_k_scipy_sparse[] = "scipy.sparse";
-static char __pyx_k_hiddenNeurons[] = "hiddenNeurons";
 static char __pyx_k_pyx_getbuffer[] = "__pyx_getbuffer";
 static char __pyx_k_allocate_buffer[] = "allocate_buffer";
 static char __pyx_k_dtype_is_object[] = "dtype_is_object";
 static char __pyx_k_ascontiguousarray[] = "ascontiguousarray";
+static char __pyx_k_numTransformation[] = "numTransformation";
 static char __pyx_k_strided_and_direct[] = "<strided and direct>";
 static char __pyx_k_strided_and_indirect[] = "<strided and indirect>";
 static char __pyx_k_contiguous_and_direct[] = "<contiguous and direct>";
@@ -1709,7 +1709,6 @@ static PyObject *__pyx_n_s_IndexError;
 static PyObject *__pyx_kp_s_Indirect_dimensions_not_supporte;
 static PyObject *__pyx_kp_s_Invalid_mode_expected_c_or_fortr;
 static PyObject *__pyx_kp_s_Invalid_shape_in_axis_d_d;
-static PyObject *__pyx_n_s_J;
 static PyObject *__pyx_n_s_MemoryError;
 static PyObject *__pyx_kp_s_MemoryView_of_r_at_0x_x;
 static PyObject *__pyx_kp_s_MemoryView_of_r_object;
@@ -1727,6 +1726,7 @@ static PyObject *__pyx_kp_u__11;
 static PyObject *__pyx_kp_b__7;
 static PyObject *__pyx_kp_b__8;
 static PyObject *__pyx_kp_b__9;
+static PyObject *__pyx_n_s_activation;
 static PyObject *__pyx_n_s_allocate_buffer;
 static PyObject *__pyx_n_s_asarray;
 static PyObject *__pyx_n_s_ascontiguousarray;
@@ -1734,6 +1734,7 @@ static PyObject *__pyx_n_s_base;
 static PyObject *__pyx_n_s_c;
 static PyObject *__pyx_n_u_c;
 static PyObject *__pyx_n_s_class;
+static PyObject *__pyx_n_s_columns;
 static PyObject *__pyx_kp_s_contiguous_and_direct;
 static PyObject *__pyx_kp_s_contiguous_and_indirect;
 static PyObject *__pyx_n_s_csr_matrix;
@@ -1746,9 +1747,7 @@ static PyObject *__pyx_n_s_format;
 static PyObject *__pyx_n_s_fortran;
 static PyObject *__pyx_n_u_fortran;
 static PyObject *__pyx_kp_s_got_differing_extents_in_dimensi;
-static PyObject *__pyx_n_s_hiddenNeurons;
 static PyObject *__pyx_n_s_hlf;
-static PyObject *__pyx_n_s_hn;
 static PyObject *__pyx_n_s_id;
 static PyObject *__pyx_n_s_import;
 static PyObject *__pyx_n_s_indices;
@@ -1756,7 +1755,6 @@ static PyObject *__pyx_n_s_indptr;
 static PyObject *__pyx_n_s_itemsize;
 static PyObject *__pyx_kp_s_itemsize_0_for_cython_array;
 static PyObject *__pyx_n_s_join;
-static PyObject *__pyx_n_s_kernel;
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_memview;
 static PyObject *__pyx_n_s_mode;
@@ -1767,6 +1765,8 @@ static PyObject *__pyx_kp_u_ndarray_is_not_C_contiguous;
 static PyObject *__pyx_kp_u_ndarray_is_not_Fortran_contiguou;
 static PyObject *__pyx_n_s_ndim;
 static PyObject *__pyx_n_s_np;
+static PyObject *__pyx_n_s_numT;
+static PyObject *__pyx_n_s_numTransformation;
 static PyObject *__pyx_n_s_numpy;
 static PyObject *__pyx_n_s_obj;
 static PyObject *__pyx_n_s_pack;
@@ -1877,7 +1877,7 @@ static int __pyx_pf_3ELM_3ELM___cinit__(struct __pyx_obj_3ELM_ELM *__pyx_v_self)
  *         self.thisptr = new cELM()
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
  *         del self.thisptr
- *     def fit(self, J, hiddenNeurons=20, seed=0):
+ *     def fit(self, columns, numTransformation=20, seed=0):
  */
 
 /* Python wrapper */
@@ -1899,8 +1899,8 @@ static void __pyx_pf_3ELM_3ELM_2__dealloc__(struct __pyx_obj_3ELM_ELM *__pyx_v_s
  *         self.thisptr = new cELM()
  *     def __dealloc__(self):
  *         del self.thisptr             # <<<<<<<<<<<<<<
- *     def fit(self, J, hiddenNeurons=20, seed=0):
- *         global hn
+ *     def fit(self, columns, numTransformation=20, seed=0):
+ *         global numT
  */
   delete __pyx_v_self->thisptr;
 
@@ -1909,7 +1909,7 @@ static void __pyx_pf_3ELM_3ELM_2__dealloc__(struct __pyx_obj_3ELM_ELM *__pyx_v_s
  *         self.thisptr = new cELM()
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
  *         del self.thisptr
- *     def fit(self, J, hiddenNeurons=20, seed=0):
+ *     def fit(self, columns, numTransformation=20, seed=0):
  */
 
   /* function exit code */
@@ -1919,16 +1919,16 @@ static void __pyx_pf_3ELM_3ELM_2__dealloc__(struct __pyx_obj_3ELM_ELM *__pyx_v_s
 /* "ELM.pyx":22
  *     def __dealloc__(self):
  *         del self.thisptr
- *     def fit(self, J, hiddenNeurons=20, seed=0):             # <<<<<<<<<<<<<<
- *         global hn
- *         hn = hiddenNeurons
+ *     def fit(self, columns, numTransformation=20, seed=0):             # <<<<<<<<<<<<<<
+ *         global numT
+ *         numT = numTransformation
  */
 
 /* Python wrapper */
 static PyObject *__pyx_pw_3ELM_3ELM_5fit(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
 static PyObject *__pyx_pw_3ELM_3ELM_5fit(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
-  PyObject *__pyx_v_J = 0;
-  PyObject *__pyx_v_hiddenNeurons = 0;
+  PyObject *__pyx_v_columns = 0;
+  PyObject *__pyx_v_numTransformation = 0;
   PyObject *__pyx_v_seed = 0;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
@@ -1937,7 +1937,7 @@ static PyObject *__pyx_pw_3ELM_3ELM_5fit(PyObject *__pyx_v_self, PyObject *__pyx
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("fit (wrapper)", 0);
   {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_J,&__pyx_n_s_hiddenNeurons,&__pyx_n_s_seed,0};
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_columns,&__pyx_n_s_numTransformation,&__pyx_n_s_seed,0};
     PyObject* values[3] = {0,0,0};
     values[1] = ((PyObject *)__pyx_int_20);
     values[2] = ((PyObject *)__pyx_int_0);
@@ -1954,11 +1954,11 @@ static PyObject *__pyx_pw_3ELM_3ELM_5fit(PyObject *__pyx_v_self, PyObject *__pyx
       kw_args = PyDict_Size(__pyx_kwds);
       switch (pos_args) {
         case  0:
-        if (likely((values[0] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_J)) != 0)) kw_args--;
+        if (likely((values[0] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_columns)) != 0)) kw_args--;
         else goto __pyx_L5_argtuple_error;
         case  1:
         if (kw_args > 0) {
-          PyObject* value = PyDict_GetItem(__pyx_kwds, __pyx_n_s_hiddenNeurons);
+          PyObject* value = PyDict_GetItem(__pyx_kwds, __pyx_n_s_numTransformation);
           if (value) { values[1] = value; kw_args--; }
         }
         case  2:
@@ -1979,8 +1979,8 @@ static PyObject *__pyx_pw_3ELM_3ELM_5fit(PyObject *__pyx_v_self, PyObject *__pyx
         default: goto __pyx_L5_argtuple_error;
       }
     }
-    __pyx_v_J = values[0];
-    __pyx_v_hiddenNeurons = values[1];
+    __pyx_v_columns = values[0];
+    __pyx_v_numTransformation = values[1];
     __pyx_v_seed = values[2];
   }
   goto __pyx_L4_argument_unpacking_done;
@@ -1991,14 +1991,14 @@ static PyObject *__pyx_pw_3ELM_3ELM_5fit(PyObject *__pyx_v_self, PyObject *__pyx
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_3ELM_3ELM_4fit(((struct __pyx_obj_3ELM_ELM *)__pyx_v_self), __pyx_v_J, __pyx_v_hiddenNeurons, __pyx_v_seed);
+  __pyx_r = __pyx_pf_3ELM_3ELM_4fit(((struct __pyx_obj_3ELM_ELM *)__pyx_v_self), __pyx_v_columns, __pyx_v_numTransformation, __pyx_v_seed);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3ELM_3ELM_4fit(struct __pyx_obj_3ELM_ELM *__pyx_v_self, PyObject *__pyx_v_J, PyObject *__pyx_v_hiddenNeurons, PyObject *__pyx_v_seed) {
+static PyObject *__pyx_pf_3ELM_3ELM_4fit(struct __pyx_obj_3ELM_ELM *__pyx_v_self, PyObject *__pyx_v_columns, PyObject *__pyx_v_numTransformation, PyObject *__pyx_v_seed) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -2010,32 +2010,32 @@ static PyObject *__pyx_pf_3ELM_3ELM_4fit(struct __pyx_obj_3ELM_ELM *__pyx_v_self
   __Pyx_RefNannySetupContext("fit", 0);
 
   /* "ELM.pyx":24
- *     def fit(self, J, hiddenNeurons=20, seed=0):
- *         global hn
- *         hn = hiddenNeurons             # <<<<<<<<<<<<<<
- *         self.thisptr.cfit(J, hiddenNeurons, seed)
- *     def transform(self, X, kernel='rbf'):
+ *     def fit(self, columns, numTransformation=20, seed=0):
+ *         global numT
+ *         numT = numTransformation             # <<<<<<<<<<<<<<
+ *         self.thisptr.cfit(columns, numTransformation, seed)
+ *     def transform(self, X, activation='sig'):
  */
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_hn, __pyx_v_hiddenNeurons) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 24; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_numT, __pyx_v_numTransformation) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 24; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
   /* "ELM.pyx":25
- *         global hn
- *         hn = hiddenNeurons
- *         self.thisptr.cfit(J, hiddenNeurons, seed)             # <<<<<<<<<<<<<<
- *     def transform(self, X, kernel='rbf'):
- *         r = X.shape[0]
+ *         global numT
+ *         numT = numTransformation
+ *         self.thisptr.cfit(columns, numTransformation, seed)             # <<<<<<<<<<<<<<
+ *     def transform(self, X, activation='sig'):
+ *         rows = X.shape[0]
  */
-  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_J); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 25; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_v_hiddenNeurons); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 25; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_columns); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 25; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_v_numTransformation); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 25; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_v_seed); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 25; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_v_self->thisptr->cfit(__pyx_t_1, __pyx_t_2, __pyx_t_3);
 
   /* "ELM.pyx":22
  *     def __dealloc__(self):
  *         del self.thisptr
- *     def fit(self, J, hiddenNeurons=20, seed=0):             # <<<<<<<<<<<<<<
- *         global hn
- *         hn = hiddenNeurons
+ *     def fit(self, columns, numTransformation=20, seed=0):             # <<<<<<<<<<<<<<
+ *         global numT
+ *         numT = numTransformation
  */
 
   /* function exit code */
@@ -2051,10 +2051,10 @@ static PyObject *__pyx_pf_3ELM_3ELM_4fit(struct __pyx_obj_3ELM_ELM *__pyx_v_self
 }
 
 /* "ELM.pyx":26
- *         hn = hiddenNeurons
- *         self.thisptr.cfit(J, hiddenNeurons, seed)
- *     def transform(self, X, kernel='rbf'):             # <<<<<<<<<<<<<<
- *         r = X.shape[0]
+ *         numT = numTransformation
+ *         self.thisptr.cfit(columns, numTransformation, seed)
+ *     def transform(self, X, activation='sig'):             # <<<<<<<<<<<<<<
+ *         rows = X.shape[0]
  * 
  */
 
@@ -2062,7 +2062,7 @@ static PyObject *__pyx_pf_3ELM_3ELM_4fit(struct __pyx_obj_3ELM_ELM *__pyx_v_self
 static PyObject *__pyx_pw_3ELM_3ELM_7transform(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
 static PyObject *__pyx_pw_3ELM_3ELM_7transform(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_X = 0;
-  PyObject *__pyx_v_kernel = 0;
+  PyObject *__pyx_v_activation = 0;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -2070,9 +2070,9 @@ static PyObject *__pyx_pw_3ELM_3ELM_7transform(PyObject *__pyx_v_self, PyObject 
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("transform (wrapper)", 0);
   {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_X,&__pyx_n_s_kernel,0};
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_X,&__pyx_n_s_activation,0};
     PyObject* values[2] = {0,0};
-    values[1] = ((PyObject *)__pyx_n_s_rbf);
+    values[1] = ((PyObject *)__pyx_n_s_sig);
     if (unlikely(__pyx_kwds)) {
       Py_ssize_t kw_args;
       const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
@@ -2089,7 +2089,7 @@ static PyObject *__pyx_pw_3ELM_3ELM_7transform(PyObject *__pyx_v_self, PyObject 
         else goto __pyx_L5_argtuple_error;
         case  1:
         if (kw_args > 0) {
-          PyObject* value = PyDict_GetItem(__pyx_kwds, __pyx_n_s_kernel);
+          PyObject* value = PyDict_GetItem(__pyx_kwds, __pyx_n_s_activation);
           if (value) { values[1] = value; kw_args--; }
         }
       }
@@ -2105,7 +2105,7 @@ static PyObject *__pyx_pw_3ELM_3ELM_7transform(PyObject *__pyx_v_self, PyObject 
       }
     }
     __pyx_v_X = values[0];
-    __pyx_v_kernel = values[1];
+    __pyx_v_activation = values[1];
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
@@ -2115,15 +2115,15 @@ static PyObject *__pyx_pw_3ELM_3ELM_7transform(PyObject *__pyx_v_self, PyObject 
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_3ELM_3ELM_6transform(((struct __pyx_obj_3ELM_ELM *)__pyx_v_self), __pyx_v_X, __pyx_v_kernel);
+  __pyx_r = __pyx_pf_3ELM_3ELM_6transform(((struct __pyx_obj_3ELM_ELM *)__pyx_v_self), __pyx_v_X, __pyx_v_activation);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3ELM_3ELM_6transform(struct __pyx_obj_3ELM_ELM *__pyx_v_self, PyObject *__pyx_v_X, PyObject *__pyx_v_kernel) {
-  PyObject *__pyx_v_r = NULL;
+static PyObject *__pyx_pf_3ELM_3ELM_6transform(struct __pyx_obj_3ELM_ELM *__pyx_v_self, PyObject *__pyx_v_X, PyObject *__pyx_v_activation) {
+  PyObject *__pyx_v_rows = NULL;
   long __pyx_v_typ;
   PyObject *__pyx_v_dataX = NULL;
   PyObject *__pyx_v_indptrX = NULL;
@@ -2149,36 +2149,36 @@ static PyObject *__pyx_pf_3ELM_3ELM_6transform(struct __pyx_obj_3ELM_ELM *__pyx_
   __Pyx_RefNannySetupContext("transform", 0);
 
   /* "ELM.pyx":27
- *         self.thisptr.cfit(J, hiddenNeurons, seed)
- *     def transform(self, X, kernel='rbf'):
- *         r = X.shape[0]             # <<<<<<<<<<<<<<
+ *         self.thisptr.cfit(columns, numTransformation, seed)
+ *     def transform(self, X, activation='sig'):
+ *         rows = X.shape[0]             # <<<<<<<<<<<<<<
  * 
- *         if kernel is 'rbf':
+ *         if activation is 'sig':
  */
   __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_X, __pyx_n_s_shape); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 27; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_2 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 27; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_r = __pyx_t_2;
+  __pyx_v_rows = __pyx_t_2;
   __pyx_t_2 = 0;
 
   /* "ELM.pyx":29
- *         r = X.shape[0]
+ *         rows = X.shape[0]
  * 
- *         if kernel is 'rbf':             # <<<<<<<<<<<<<<
+ *         if activation is 'sig':             # <<<<<<<<<<<<<<
  *             typ = 0
- *         elif kernel is 'sig':
+ *         elif activation is 'hlf':
  */
-  __pyx_t_3 = (__pyx_v_kernel == __pyx_n_s_rbf);
+  __pyx_t_3 = (__pyx_v_activation == __pyx_n_s_sig);
   __pyx_t_4 = (__pyx_t_3 != 0);
   if (__pyx_t_4) {
 
     /* "ELM.pyx":30
  * 
- *         if kernel is 'rbf':
+ *         if activation is 'sig':
  *             typ = 0             # <<<<<<<<<<<<<<
- *         elif kernel is 'sig':
+ *         elif activation is 'hlf':
  *             typ = 1
  */
     __pyx_v_typ = 0;
@@ -2186,21 +2186,21 @@ static PyObject *__pyx_pf_3ELM_3ELM_6transform(struct __pyx_obj_3ELM_ELM *__pyx_
   }
 
   /* "ELM.pyx":31
- *         if kernel is 'rbf':
+ *         if activation is 'sig':
  *             typ = 0
- *         elif kernel is 'sig':             # <<<<<<<<<<<<<<
+ *         elif activation is 'hlf':             # <<<<<<<<<<<<<<
  *             typ = 1
- *         elif kernel is 'hlf':
+ *         elif activation is 'rbf':
  */
-  __pyx_t_4 = (__pyx_v_kernel == __pyx_n_s_sig);
+  __pyx_t_4 = (__pyx_v_activation == __pyx_n_s_hlf);
   __pyx_t_3 = (__pyx_t_4 != 0);
   if (__pyx_t_3) {
 
     /* "ELM.pyx":32
  *             typ = 0
- *         elif kernel is 'sig':
+ *         elif activation is 'hlf':
  *             typ = 1             # <<<<<<<<<<<<<<
- *         elif kernel is 'hlf':
+ *         elif activation is 'rbf':
  *             typ = 2
  */
     __pyx_v_typ = 1;
@@ -2208,21 +2208,21 @@ static PyObject *__pyx_pf_3ELM_3ELM_6transform(struct __pyx_obj_3ELM_ELM *__pyx_
   }
 
   /* "ELM.pyx":33
- *         elif kernel is 'sig':
+ *         elif activation is 'hlf':
  *             typ = 1
- *         elif kernel is 'hlf':             # <<<<<<<<<<<<<<
+ *         elif activation is 'rbf':             # <<<<<<<<<<<<<<
  *             typ = 2
- *         elif kernel is 'mqf':
+ *         elif activation is 'mqf':
  */
-  __pyx_t_3 = (__pyx_v_kernel == __pyx_n_s_hlf);
+  __pyx_t_3 = (__pyx_v_activation == __pyx_n_s_rbf);
   __pyx_t_4 = (__pyx_t_3 != 0);
   if (__pyx_t_4) {
 
     /* "ELM.pyx":34
  *             typ = 1
- *         elif kernel is 'hlf':
+ *         elif activation is 'rbf':
  *             typ = 2             # <<<<<<<<<<<<<<
- *         elif kernel is 'mqf':
+ *         elif activation is 'mqf':
  *             typ = 3
  */
     __pyx_v_typ = 2;
@@ -2230,19 +2230,19 @@ static PyObject *__pyx_pf_3ELM_3ELM_6transform(struct __pyx_obj_3ELM_ELM *__pyx_
   }
 
   /* "ELM.pyx":35
- *         elif kernel is 'hlf':
+ *         elif activation is 'rbf':
  *             typ = 2
- *         elif kernel is 'mqf':             # <<<<<<<<<<<<<<
+ *         elif activation is 'mqf':             # <<<<<<<<<<<<<<
  *             typ = 3
  *         else:
  */
-  __pyx_t_4 = (__pyx_v_kernel == __pyx_n_s_mqf);
+  __pyx_t_4 = (__pyx_v_activation == __pyx_n_s_mqf);
   __pyx_t_3 = (__pyx_t_4 != 0);
   if (__pyx_t_3) {
 
     /* "ELM.pyx":36
  *             typ = 2
- *         elif kernel is 'mqf':
+ *         elif activation is 'mqf':
  *             typ = 3             # <<<<<<<<<<<<<<
  *         else:
  *             typ = 4
@@ -2325,7 +2325,7 @@ static PyObject *__pyx_pf_3ELM_3ELM_6transform(struct __pyx_obj_3ELM_ELM *__pyx_
  *             dataX = np.ascontiguousarray(X.data)
  *             indptrX = np.ascontiguousarray(X.indptr)             # <<<<<<<<<<<<<<
  *             indX = np.ascontiguousarray(X.indices)
- *             a = np.asarray(<double[:r,:hn]>self.thisptr.sparsetransform(<double*> np.PyArray_DATA(dataX), <int*> np.PyArray_DATA(indptrX), <int*> np.PyArray_DATA(indX), r, typ))
+ *             a = np.asarray(<double[:rows,:numT]>self.thisptr.sparsetransform(<double*> np.PyArray_DATA(dataX), <int*> np.PyArray_DATA(indptrX), <int*> np.PyArray_DATA(indX), rows, typ))
  */
     __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 42; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
@@ -2367,7 +2367,7 @@ static PyObject *__pyx_pf_3ELM_3ELM_6transform(struct __pyx_obj_3ELM_ELM *__pyx_
  *             dataX = np.ascontiguousarray(X.data)
  *             indptrX = np.ascontiguousarray(X.indptr)
  *             indX = np.ascontiguousarray(X.indices)             # <<<<<<<<<<<<<<
- *             a = np.asarray(<double[:r,:hn]>self.thisptr.sparsetransform(<double*> np.PyArray_DATA(dataX), <int*> np.PyArray_DATA(indptrX), <int*> np.PyArray_DATA(indX), r, typ))
+ *             a = np.asarray(<double[:rows,:numT]>self.thisptr.sparsetransform(<double*> np.PyArray_DATA(dataX), <int*> np.PyArray_DATA(indptrX), <int*> np.PyArray_DATA(indX), rows, typ))
  *         else:
  */
     __pyx_t_7 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 43; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
@@ -2409,9 +2409,9 @@ static PyObject *__pyx_pf_3ELM_3ELM_6transform(struct __pyx_obj_3ELM_ELM *__pyx_
     /* "ELM.pyx":44
  *             indptrX = np.ascontiguousarray(X.indptr)
  *             indX = np.ascontiguousarray(X.indices)
- *             a = np.asarray(<double[:r,:hn]>self.thisptr.sparsetransform(<double*> np.PyArray_DATA(dataX), <int*> np.PyArray_DATA(indptrX), <int*> np.PyArray_DATA(indX), r, typ))             # <<<<<<<<<<<<<<
+ *             a = np.asarray(<double[:rows,:numT]>self.thisptr.sparsetransform(<double*> np.PyArray_DATA(dataX), <int*> np.PyArray_DATA(indptrX), <int*> np.PyArray_DATA(indX), rows, typ))             # <<<<<<<<<<<<<<
  *         else:
- *             a = np.asarray(<double[:r,:hn]>self.thisptr.normaltransform(<double*> np.PyArray_DATA(X), r, typ))
+ *             a = np.asarray(<double[:rows,:numT]>self.thisptr.normaltransform(<double*> np.PyArray_DATA(X), rows, typ))
  */
     __pyx_t_6 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 44; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_6);
@@ -2421,11 +2421,11 @@ static PyObject *__pyx_pf_3ELM_3ELM_6transform(struct __pyx_obj_3ELM_ELM *__pyx_
     if (!(likely(((__pyx_v_dataX) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_dataX, __pyx_ptype_5numpy_ndarray))))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 44; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     if (!(likely(((__pyx_v_indptrX) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_indptrX, __pyx_ptype_5numpy_ndarray))))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 44; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     if (!(likely(((__pyx_v_indX) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_indX, __pyx_ptype_5numpy_ndarray))))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 44; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __pyx_t_8 = __Pyx_PyInt_As_int(__pyx_v_r); if (unlikely((__pyx_t_8 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 44; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_8 = __Pyx_PyInt_As_int(__pyx_v_rows); if (unlikely((__pyx_t_8 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 44; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __pyx_t_9 = __pyx_v_self->thisptr->sparsetransform(((double *)PyArray_DATA(((PyArrayObject *)__pyx_v_dataX))), ((int *)PyArray_DATA(((PyArrayObject *)__pyx_v_indptrX))), ((int *)PyArray_DATA(((PyArrayObject *)__pyx_v_indX))), __pyx_t_8, __pyx_v_typ);
-    if (unlikely(!__pyx_v_r)) { __Pyx_RaiseUnboundLocalError("r"); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 44; __pyx_clineno = __LINE__; goto __pyx_L1_error;} }
-    __pyx_t_10 = __Pyx_PyIndex_AsSsize_t(__pyx_v_r); if (unlikely((__pyx_t_10 == (Py_ssize_t)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 44; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __pyx_t_6 = __Pyx_GetModuleGlobalName(__pyx_n_s_hn); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 44; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (unlikely(!__pyx_v_rows)) { __Pyx_RaiseUnboundLocalError("rows"); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 44; __pyx_clineno = __LINE__; goto __pyx_L1_error;} }
+    __pyx_t_10 = __Pyx_PyIndex_AsSsize_t(__pyx_v_rows); if (unlikely((__pyx_t_10 == (Py_ssize_t)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 44; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_6 = __Pyx_GetModuleGlobalName(__pyx_n_s_numT); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 44; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_6);
     __pyx_t_11 = __Pyx_PyIndex_AsSsize_t(__pyx_t_6); if (unlikely((__pyx_t_11 == (Py_ssize_t)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 44; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -2476,9 +2476,9 @@ static PyObject *__pyx_pf_3ELM_3ELM_6transform(struct __pyx_obj_3ELM_ELM *__pyx_
   /*else*/ {
 
     /* "ELM.pyx":46
- *             a = np.asarray(<double[:r,:hn]>self.thisptr.sparsetransform(<double*> np.PyArray_DATA(dataX), <int*> np.PyArray_DATA(indptrX), <int*> np.PyArray_DATA(indX), r, typ))
+ *             a = np.asarray(<double[:rows,:numT]>self.thisptr.sparsetransform(<double*> np.PyArray_DATA(dataX), <int*> np.PyArray_DATA(indptrX), <int*> np.PyArray_DATA(indX), rows, typ))
  *         else:
- *             a = np.asarray(<double[:r,:hn]>self.thisptr.normaltransform(<double*> np.PyArray_DATA(X), r, typ))             # <<<<<<<<<<<<<<
+ *             a = np.asarray(<double[:rows,:numT]>self.thisptr.normaltransform(<double*> np.PyArray_DATA(X), rows, typ))             # <<<<<<<<<<<<<<
  *         return a
  */
     __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 46; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
@@ -2487,11 +2487,11 @@ static PyObject *__pyx_pf_3ELM_3ELM_6transform(struct __pyx_obj_3ELM_ELM *__pyx_
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     if (!(likely(((__pyx_v_X) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_X, __pyx_ptype_5numpy_ndarray))))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 46; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __pyx_t_8 = __Pyx_PyInt_As_int(__pyx_v_r); if (unlikely((__pyx_t_8 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 46; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_8 = __Pyx_PyInt_As_int(__pyx_v_rows); if (unlikely((__pyx_t_8 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 46; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __pyx_t_9 = __pyx_v_self->thisptr->normaltransform(((double *)PyArray_DATA(((PyArrayObject *)__pyx_v_X))), __pyx_t_8, __pyx_v_typ);
-    if (unlikely(!__pyx_v_r)) { __Pyx_RaiseUnboundLocalError("r"); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 46; __pyx_clineno = __LINE__; goto __pyx_L1_error;} }
-    __pyx_t_11 = __Pyx_PyIndex_AsSsize_t(__pyx_v_r); if (unlikely((__pyx_t_11 == (Py_ssize_t)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 46; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_hn); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 46; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (unlikely(!__pyx_v_rows)) { __Pyx_RaiseUnboundLocalError("rows"); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 46; __pyx_clineno = __LINE__; goto __pyx_L1_error;} }
+    __pyx_t_11 = __Pyx_PyIndex_AsSsize_t(__pyx_v_rows); if (unlikely((__pyx_t_11 == (Py_ssize_t)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 46; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_numT); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 46; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_t_10 = __Pyx_PyIndex_AsSsize_t(__pyx_t_1); if (unlikely((__pyx_t_10 == (Py_ssize_t)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 46; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -2542,7 +2542,7 @@ static PyObject *__pyx_pf_3ELM_3ELM_6transform(struct __pyx_obj_3ELM_ELM *__pyx_
 
   /* "ELM.pyx":47
  *         else:
- *             a = np.asarray(<double[:r,:hn]>self.thisptr.normaltransform(<double*> np.PyArray_DATA(X), r, typ))
+ *             a = np.asarray(<double[:rows,:numT]>self.thisptr.normaltransform(<double*> np.PyArray_DATA(X), rows, typ))
  *         return a             # <<<<<<<<<<<<<<
  */
   __Pyx_XDECREF(__pyx_r);
@@ -2551,10 +2551,10 @@ static PyObject *__pyx_pf_3ELM_3ELM_6transform(struct __pyx_obj_3ELM_ELM *__pyx_
   goto __pyx_L0;
 
   /* "ELM.pyx":26
- *         hn = hiddenNeurons
- *         self.thisptr.cfit(J, hiddenNeurons, seed)
- *     def transform(self, X, kernel='rbf'):             # <<<<<<<<<<<<<<
- *         r = X.shape[0]
+ *         numT = numTransformation
+ *         self.thisptr.cfit(columns, numTransformation, seed)
+ *     def transform(self, X, activation='sig'):             # <<<<<<<<<<<<<<
+ *         rows = X.shape[0]
  * 
  */
 
@@ -2569,7 +2569,7 @@ static PyObject *__pyx_pf_3ELM_3ELM_6transform(struct __pyx_obj_3ELM_ELM *__pyx_
   __Pyx_AddTraceback("ELM.ELM.transform", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
-  __Pyx_XDECREF(__pyx_v_r);
+  __Pyx_XDECREF(__pyx_v_rows);
   __Pyx_XDECREF(__pyx_v_dataX);
   __Pyx_XDECREF(__pyx_v_indptrX);
   __Pyx_XDECREF(__pyx_v_indX);
@@ -16323,7 +16323,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s_Indirect_dimensions_not_supporte, __pyx_k_Indirect_dimensions_not_supporte, sizeof(__pyx_k_Indirect_dimensions_not_supporte), 0, 0, 1, 0},
   {&__pyx_kp_s_Invalid_mode_expected_c_or_fortr, __pyx_k_Invalid_mode_expected_c_or_fortr, sizeof(__pyx_k_Invalid_mode_expected_c_or_fortr), 0, 0, 1, 0},
   {&__pyx_kp_s_Invalid_shape_in_axis_d_d, __pyx_k_Invalid_shape_in_axis_d_d, sizeof(__pyx_k_Invalid_shape_in_axis_d_d), 0, 0, 1, 0},
-  {&__pyx_n_s_J, __pyx_k_J, sizeof(__pyx_k_J), 0, 0, 1, 1},
   {&__pyx_n_s_MemoryError, __pyx_k_MemoryError, sizeof(__pyx_k_MemoryError), 0, 0, 1, 1},
   {&__pyx_kp_s_MemoryView_of_r_at_0x_x, __pyx_k_MemoryView_of_r_at_0x_x, sizeof(__pyx_k_MemoryView_of_r_at_0x_x), 0, 0, 1, 0},
   {&__pyx_kp_s_MemoryView_of_r_object, __pyx_k_MemoryView_of_r_object, sizeof(__pyx_k_MemoryView_of_r_object), 0, 0, 1, 0},
@@ -16341,6 +16340,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_b__7, __pyx_k__7, sizeof(__pyx_k__7), 0, 0, 0, 0},
   {&__pyx_kp_b__8, __pyx_k__8, sizeof(__pyx_k__8), 0, 0, 0, 0},
   {&__pyx_kp_b__9, __pyx_k__9, sizeof(__pyx_k__9), 0, 0, 0, 0},
+  {&__pyx_n_s_activation, __pyx_k_activation, sizeof(__pyx_k_activation), 0, 0, 1, 1},
   {&__pyx_n_s_allocate_buffer, __pyx_k_allocate_buffer, sizeof(__pyx_k_allocate_buffer), 0, 0, 1, 1},
   {&__pyx_n_s_asarray, __pyx_k_asarray, sizeof(__pyx_k_asarray), 0, 0, 1, 1},
   {&__pyx_n_s_ascontiguousarray, __pyx_k_ascontiguousarray, sizeof(__pyx_k_ascontiguousarray), 0, 0, 1, 1},
@@ -16348,6 +16348,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_c, __pyx_k_c, sizeof(__pyx_k_c), 0, 0, 1, 1},
   {&__pyx_n_u_c, __pyx_k_c, sizeof(__pyx_k_c), 0, 1, 0, 1},
   {&__pyx_n_s_class, __pyx_k_class, sizeof(__pyx_k_class), 0, 0, 1, 1},
+  {&__pyx_n_s_columns, __pyx_k_columns, sizeof(__pyx_k_columns), 0, 0, 1, 1},
   {&__pyx_kp_s_contiguous_and_direct, __pyx_k_contiguous_and_direct, sizeof(__pyx_k_contiguous_and_direct), 0, 0, 1, 0},
   {&__pyx_kp_s_contiguous_and_indirect, __pyx_k_contiguous_and_indirect, sizeof(__pyx_k_contiguous_and_indirect), 0, 0, 1, 0},
   {&__pyx_n_s_csr_matrix, __pyx_k_csr_matrix, sizeof(__pyx_k_csr_matrix), 0, 0, 1, 1},
@@ -16360,9 +16361,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_fortran, __pyx_k_fortran, sizeof(__pyx_k_fortran), 0, 0, 1, 1},
   {&__pyx_n_u_fortran, __pyx_k_fortran, sizeof(__pyx_k_fortran), 0, 1, 0, 1},
   {&__pyx_kp_s_got_differing_extents_in_dimensi, __pyx_k_got_differing_extents_in_dimensi, sizeof(__pyx_k_got_differing_extents_in_dimensi), 0, 0, 1, 0},
-  {&__pyx_n_s_hiddenNeurons, __pyx_k_hiddenNeurons, sizeof(__pyx_k_hiddenNeurons), 0, 0, 1, 1},
   {&__pyx_n_s_hlf, __pyx_k_hlf, sizeof(__pyx_k_hlf), 0, 0, 1, 1},
-  {&__pyx_n_s_hn, __pyx_k_hn, sizeof(__pyx_k_hn), 0, 0, 1, 1},
   {&__pyx_n_s_id, __pyx_k_id, sizeof(__pyx_k_id), 0, 0, 1, 1},
   {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
   {&__pyx_n_s_indices, __pyx_k_indices, sizeof(__pyx_k_indices), 0, 0, 1, 1},
@@ -16370,7 +16369,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_itemsize, __pyx_k_itemsize, sizeof(__pyx_k_itemsize), 0, 0, 1, 1},
   {&__pyx_kp_s_itemsize_0_for_cython_array, __pyx_k_itemsize_0_for_cython_array, sizeof(__pyx_k_itemsize_0_for_cython_array), 0, 0, 1, 0},
   {&__pyx_n_s_join, __pyx_k_join, sizeof(__pyx_k_join), 0, 0, 1, 1},
-  {&__pyx_n_s_kernel, __pyx_k_kernel, sizeof(__pyx_k_kernel), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
   {&__pyx_n_s_memview, __pyx_k_memview, sizeof(__pyx_k_memview), 0, 0, 1, 1},
   {&__pyx_n_s_mode, __pyx_k_mode, sizeof(__pyx_k_mode), 0, 0, 1, 1},
@@ -16381,6 +16379,8 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_u_ndarray_is_not_Fortran_contiguou, __pyx_k_ndarray_is_not_Fortran_contiguou, sizeof(__pyx_k_ndarray_is_not_Fortran_contiguou), 0, 1, 0, 0},
   {&__pyx_n_s_ndim, __pyx_k_ndim, sizeof(__pyx_k_ndim), 0, 0, 1, 1},
   {&__pyx_n_s_np, __pyx_k_np, sizeof(__pyx_k_np), 0, 0, 1, 1},
+  {&__pyx_n_s_numT, __pyx_k_numT, sizeof(__pyx_k_numT), 0, 0, 1, 1},
+  {&__pyx_n_s_numTransformation, __pyx_k_numTransformation, sizeof(__pyx_k_numTransformation), 0, 0, 1, 1},
   {&__pyx_n_s_numpy, __pyx_k_numpy, sizeof(__pyx_k_numpy), 0, 0, 1, 1},
   {&__pyx_n_s_obj, __pyx_k_obj, sizeof(__pyx_k_obj), 0, 0, 1, 1},
   {&__pyx_n_s_pack, __pyx_k_pack, sizeof(__pyx_k_pack), 0, 0, 1, 1},
@@ -16851,7 +16851,7 @@ PyMODINIT_FUNC PyInit_ELM(void)
  * import numpy as np
  * from scipy.sparse import csr_matrix             # <<<<<<<<<<<<<<
  * 
- * cdef extern from "extras.hpp":
+ * cdef extern from "extras.h":
  */
   __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 7; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);

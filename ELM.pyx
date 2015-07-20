@@ -6,10 +6,10 @@ cimport numpy as np
 import numpy as np
 from scipy.sparse import csr_matrix
 
-cdef extern from "extras.hpp":
+cdef extern from "extras.h":
     cdef cppclass cELM:
         cELM()
-        int cfit(int, int, int)
+        void cfit(int, int, int)
         double* normaltransform(double*, int, int)
         double* sparsetransform(double*, int*, int*, int, int)
 
@@ -19,29 +19,29 @@ cdef class ELM:
         self.thisptr = new cELM()
     def __dealloc__(self):
         del self.thisptr
-    def fit(self, J, hiddenNeurons=20, seed=0):
-        global hn
-        hn = hiddenNeurons
-        self.thisptr.cfit(J, hiddenNeurons, seed)
-    def transform(self, X, kernel='rbf'):
-        r = X.shape[0]
-        
-        if kernel is 'rbf':
+    def fit(self, columns, numTransformation=20, seed=0):
+        global numT
+        numT = numTransformation
+        self.thisptr.cfit(columns, numTransformation, seed)
+    def transform(self, X, activation='sig'):
+        rows = X.shape[0]
+
+        if activation is 'sig':
             typ = 0
-        elif kernel is 'sig':
+        elif activation is 'hlf':
             typ = 1
-        elif kernel is 'hlf':
+        elif activation is 'rbf':
             typ = 2
-        elif kernel is 'mqf':
+        elif activation is 'mqf':
             typ = 3
         else:
             typ = 4
-            
+
         if isinstance(X, csr_matrix):
             dataX = np.ascontiguousarray(X.data)
             indptrX = np.ascontiguousarray(X.indptr)
             indX = np.ascontiguousarray(X.indices)
-            a = np.asarray(<double[:r,:hn]>self.thisptr.sparsetransform(<double*> np.PyArray_DATA(dataX), <int*> np.PyArray_DATA(indptrX), <int*> np.PyArray_DATA(indX), r, typ))
-        else:  
-            a = np.asarray(<double[:r,:hn]>self.thisptr.normaltransform(<double*> np.PyArray_DATA(X), r, typ))
+            a = np.asarray(<double[:rows,:numT]>self.thisptr.sparsetransform(<double*> np.PyArray_DATA(dataX), <int*> np.PyArray_DATA(indptrX), <int*> np.PyArray_DATA(indX), rows, typ))
+        else:
+            a = np.asarray(<double[:rows,:numT]>self.thisptr.normaltransform(<double*> np.PyArray_DATA(X), rows, typ))
         return a
