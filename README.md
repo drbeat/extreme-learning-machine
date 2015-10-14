@@ -1,17 +1,15 @@
-## Development of a prototype of an       Extreme Learning Machine
+## Development of a prototype of an Extreme Learning Machine
 
 This project is an implementation of the Extreme Learning Machine (ELM) in C++ with an interface in Cython for Python.
 
 ### Files
 
 * cELM.cpp | C++ source
-* extras.hpp | C++ header
+* extras.h | C++ header
 * ELM.pyx | Cython wrapper
 * setup.py | Cython compilersetup
 * test.py | Testfile with data
 * ELM.cpp | Compiled Cythonfile
-* ELM.pyd | ELM module for Windows
-* ELM.so | ELM module for Linux
 
 ### Usage
 
@@ -23,7 +21,7 @@ You can find an example implementation in the *test.py*.
 
 In the next step the ELM has to be fitted to the data.
 
-> elm.fit(inputNeurons, hiddenNeurons)
+> elm.fit(columns, numTransformations, seed)
 
 After the fitting your data can be transformed.
 
