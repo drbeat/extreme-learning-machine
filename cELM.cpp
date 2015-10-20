@@ -162,7 +162,6 @@ double * cELM::sparsetransform(double * X, int * Xindptr, int * Xind, int rows, 
     }
 
     // H = activate(preH)
-    double cent = 0;
     double * H = new double[rows * numTransformation];
 
     if (activation == 0)
